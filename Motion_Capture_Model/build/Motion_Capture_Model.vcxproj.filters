@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\Paul.Jutte\source\repos\Motion_Capture_GUI\Motion_Capture_Model\src\BodyTracking.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Paul.Jutte\source\repos\Motion_Capture_GUI\Motion_Capture_Model\src\Controller.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Paul.Jutte\source\repos\Motion_Capture_GUI\Motion_Capture_Model\src\CoordinateDataStorage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Paul.Jutte\source\repos\Motion_Capture_GUI\Motion_Capture_Model\src\DataStructures.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Paul.Jutte\source\repos\Motion_Capture_GUI\Motion_Capture_Model\src\GLViewerBodyTracking.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Paul.Jutte\source\repos\Motion_Capture_GUI\Motion_Capture_Model\src\GLViewerPositionalTracking.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Paul.Jutte\source\repos\Motion_Capture_GUI\Motion_Capture_Model\src\PositionalTracking.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Paul.Jutte\source\repos\Motion_Capture_GUI\Motion_Capture_Model\src\Shader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Paul.Jutte\source\repos\Motion_Capture_GUI\Motion_Capture_Model\src\TrackingViewer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Paul.Jutte\source\repos\Motion_Capture_GUI\Motion_Capture_Model\src\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\Paul.Jutte\source\repos\Motion_Capture_GUI\Motion_Capture_Model\include\BodyTracking.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Paul.Jutte\source\repos\Motion_Capture_GUI\Motion_Capture_Model\include\Controller.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Paul.Jutte\source\repos\Motion_Capture_GUI\Motion_Capture_Model\include\CoordinateDataStorage.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Paul.Jutte\source\repos\Motion_Capture_GUI\Motion_Capture_Model\include\DataStructures.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Paul.Jutte\source\repos\Motion_Capture_GUI\Motion_Capture_Model\include\GLViewerBodyTracking.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Paul.Jutte\source\repos\Motion_Capture_GUI\Motion_Capture_Model\include\GLViewerPositionalTracking.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Paul.Jutte\source\repos\Motion_Capture_GUI\Motion_Capture_Model\include\Shader.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Paul.Jutte\source\repos\Motion_Capture_GUI\Motion_Capture_Model\include\TrackingViewer.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Paul.Jutte\source\repos\Motion_Capture_GUI\Motion_Capture_Model\include\ZEDModel.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\Paul.Jutte\source\repos\Motion_Capture_GUI\Motion_Capture_Model\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{D7852F5B-4FFC-3B13-9A64-C137C0325BEB}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{F46DA5A2-AC1C-3714-A80A-91164DF63799}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,3 @@
+C:/Users/Paul.Jutte/source/repos/Motion_Capture_GUI/Motion_Capture_Model/build/CMakeFiles/Motion_Capture_Model.dir
+C:/Users/Paul.Jutte/source/repos/Motion_Capture_GUI/Motion_Capture_Model/build/CMakeFiles/ALL_BUILD.dir
+C:/Users/Paul.Jutte/source/repos/Motion_Capture_GUI/Motion_Capture_Model/build/CMakeFiles/ZERO_CHECK.dir
