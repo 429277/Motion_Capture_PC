@@ -11,6 +11,7 @@ namespace Motion_Capture_View
     public partial class Form1 : Form
     {
         Motion_Capture_Controller Controller;
+        public FormCalibration calibration;
         public BindingList<Coordinate> coordinates = new BindingList<Coordinate>();
         public DataTable dataTable = new();
 
@@ -36,6 +37,14 @@ namespace Motion_Capture_View
             Cursor.Current = Cursors.WaitCursor;
             ToggleLoadingSymbol(true);
             Motion_Capture_Controller.StartBodyTracking();
+        }
+
+        private void btnCalibrate_Click(object sender, EventArgs e)
+        {
+            Cursor.Current = Cursors.WaitCursor;
+            calibration = new FormCalibration();
+            calibration.Show();
+            Motion_Capture_Controller.StartPositionalTracking();
         }
     }
 }

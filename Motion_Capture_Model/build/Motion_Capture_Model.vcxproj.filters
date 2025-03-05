@@ -60,6 +60,9 @@
     <ClInclude Include="C:\Users\Paul.Jutte\source\repos\Motion_Capture_GUI\Motion_Capture_Model\include\ZEDModel.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\PositionalTracking.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="C:\Users\Paul.Jutte\source\repos\Motion_Capture_GUI\Motion_Capture_Model\CMakeLists.txt" />

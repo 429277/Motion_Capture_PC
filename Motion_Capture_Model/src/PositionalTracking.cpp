@@ -28,6 +28,7 @@
 
 // Sample includes
 #include "GLViewerPositionalTracking.hpp"
+#include "Controller.hpp"
 
 // Using std namespace
 using namespace std;
@@ -43,7 +44,7 @@ inline std::string setTxt(sl::float3 value) {
 
 std::string parseArgs(int argc, char **argv, sl::InitParameters &param);
 
-int PositionalTracking(int argc, char **argv)
+int PositionalTracking(int argc, char **argv, char* areaFile = "", bool calibration = 0)
 {
 
     Camera zed;
@@ -82,6 +83,9 @@ int PositionalTracking(int argc, char **argv)
     positional_tracking_param.enable_imu_fusion = true;
     positional_tracking_param.mode = sl::POSITIONAL_TRACKING_MODE::GEN_1;
     // positional_tracking_param.enable_area_memory = true;
+    if (areaFile != "") {
+        positional_tracking_param.area_file_path = areaFile;
+    }
     // enable Positional Tracking
     returned_state = zed.enablePositionalTracking(positional_tracking_param);
     if (returned_state != ERROR_CODE::SUCCESS) {
@@ -144,8 +148,11 @@ int PositionalTracking(int argc, char **argv)
             if (tracking_state == POSITIONAL_TRACKING_STATE::OK)
             {
                 // Get rotation and translation and displays it
-                text_rotation = setTxt(camera_path.getEulerAngles());
-                text_translation = setTxt(camera_path.getTranslation());
+                sl::float3 rotation = camera_path.getEulerAngles();
+                text_rotation = setTxt(rotation);
+                sl::float3 translation = camera_path.getTranslation();
+                text_translation = setTxt(translation);
+                NotifyPosition(*new Coordinate(translation));
             }
 
             // Update rotation, translation and tracking state values in the OpenGL window
@@ -164,9 +171,12 @@ int PositionalTracking(int argc, char **argv)
         else
             sleep_ms(1);
     }
-
-    zed.disablePositionalTracking();
-
+    if (calibration = 0) {
+        zed.disablePositionalTracking();
+    }
+    else {
+        zed.disablePositionalTracking("Area1");
+    }
     zed.close();
     return EXIT_SUCCESS;
 }

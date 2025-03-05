@@ -17,3 +17,35 @@ struct Coordinate {
 		z = points.z;
 	}
 };
+
+struct RotationPass
+{
+	float x;
+	float y;
+	float z;
+
+	RotationPass(float xRot, float yRot, float zRot)
+	{
+		x = xRot;
+		y = yRot;
+		z = zRot;
+	}
+	RotationPass(sl::float3 rots) {
+		x = rots.x;
+		y = rots.y;
+		z = rots.z;
+	}
+};
+
+struct PosePass
+{
+	struct Coordinate *coordinate;
+	struct RotationPass *rotation;
+
+	PosePass(Coordinate *coord, RotationPass *rot)
+	{
+		coordinate = coord;
+		rotation = rot;
+	}
+
+};

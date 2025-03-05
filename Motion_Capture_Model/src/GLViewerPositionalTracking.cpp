@@ -64,7 +64,9 @@ void addVert(Simple3DObjectPositionalTracking &obj, float i_f, float limit, sl::
 }
 
 void GLViewerPositionalTracking::init(int argc, char **argv, sl::MODEL camera_model) {
-    glutInit(&argc, argv);
+    if (glutGet(GLUT_INIT_STATE) != 1) {
+        glutInit(&argc, argv);
+    }
 
     int wnd_w = glutGet(GLUT_SCREEN_WIDTH);
     int wnd_h = glutGet(GLUT_SCREEN_HEIGHT) *0.9;

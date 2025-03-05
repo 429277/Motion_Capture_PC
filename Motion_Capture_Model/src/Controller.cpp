@@ -1,18 +1,19 @@
 #include "BodyTracking.hpp"
+#include "PositionalTracking.hpp"
 #include "Controller.hpp"
 #include <sl/Camera.hpp>
 #include "DataStructures.hpp"
 
+char* str[] = { "" };
+char** nothing = str;
+
 typedef void (*CoordinateDataCallback)(Coordinate);
 static CoordinateDataCallback callbackCoordinate = nullptr;
 
-typedef void (*LoadingCallback)(bool);
-static LoadingCallback callbackLoading = nullptr;
+typedef void (*PositionCallback)(Coordinate);
+static PositionCallback callbackPosition = nullptr;
 
 #define Controller extern "C" _declspec(dllexport)
-
-char* string[] = { "" };
-char** nothing = string;
 
 #pragma region Coordinates callback
 Controller void RegisterCoordinateCallback(CoordinateDataCallback cb) {
@@ -27,13 +28,13 @@ void NotifyNewCoordinateData(Coordinate newValue) {
 #pragma endregion
 
 #pragma region Loading callback 
-Controller void RegisterLoadingCallback(LoadingCallback cb) {
-	callbackLoading = cb;
+Controller void RegisterPositionCallback(PositionCallback cb) {
+	callbackPosition = cb;
 }
 
-void NotifyLoadingToggle(bool loading) {
-	if (callbackLoading) {
-		callbackLoading(loading);
+void NotifyPosition(Coordinate position) {
+	if (callbackPosition) {
+		callbackPosition(position);
 	}
 }
 #pragma endregion
@@ -47,10 +48,13 @@ Controller void StartBodyTracking() {
 	BodyTracking(0, nothing);
 }
 
-Controller void GetCurrentBodyTrackingCoordinates() {
+Controller void StopBodyTracking() {
 	BodyTracking(0, nothing);
 }
 
-Controller void StopBodyTracking() {
-	BodyTracking(0, nothing);
+Controller void StartPositionalTracking(char* areaFile) {
+	PositionalTracking(0, nothing, "", 0);
+
+}Controller void SetCameraPosition(Coordinate position) {
+	
 }

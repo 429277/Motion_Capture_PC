@@ -21,6 +21,12 @@ namespace Motion_Capture_View.Scripts
         [DllImport(dllLink, CallingConvention = CallingConvention.Cdecl)]
         public static extern void StartBodyTracking();
 
+        [DllImport(dllLink, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void StartPositionalTracking();
+
+        [DllImport(dllLink, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void SetCameraPosition(Coordinate position);
+
         #region Callbacks
 
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
@@ -30,9 +36,9 @@ namespace Motion_Capture_View.Scripts
         public static extern void RegisterCoordinateCallback(CoordinateDataCallback callbackCoordinate);
 
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate void LoadingToggleCallback(bool loading);
+        public delegate void PositionCallback(Coordinate position);
         [DllImport(dllLink, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void RegisterLoadingToggleCallBack(LoadingToggleCallback callbackLoading);
+        public static extern void RegisterPositionCallback(PositionCallback callbackPosition);
 
         #endregion
 
@@ -41,7 +47,8 @@ namespace Motion_Capture_View.Scripts
             formReference = form;
             CoordinateDataCallback callbackCoordinate = new CoordinateDataCallback(OnCoordinateReceived);
             RegisterCoordinateCallback(callbackCoordinate);
-            //LoadingToggleCallback callbackLoading = new LoadingToggleCallback(OnLoadingToggleReceived);
+            PositionCallback callbackPosition = new PositionCallback(OnPositionReceived);
+            RegisterPositionCallback(callbackPosition);
         }
 
         public void OnCoordinateReceived(Coordinate coordinate)
@@ -49,9 +56,9 @@ namespace Motion_Capture_View.Scripts
             formReference.coordinates.Add(coordinate);
             formReference.AddCoordinate(coordinate);
         }
-        public void OnLoadingToggleReceived(bool loading)
+        public void OnPositionReceived(Coordinate position)
         {
-            formReference.ToggleLoadingSymbol(loading);
+            formReference.calibration.UpdateRecievedCameraPostion(position);
         }
 
     }

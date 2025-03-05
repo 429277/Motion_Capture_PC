@@ -413,6 +413,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\include\PositionalTracking.hpp" />
     <ClInclude Include="C:\Users\Paul.Jutte\source\repos\Motion_Capture_GUI\Motion_Capture_Model\include\BodyTracking.hpp" />
     <ClInclude Include="C:\Users\Paul.Jutte\source\repos\Motion_Capture_GUI\Motion_Capture_Model\include\Controller.hpp" />
     <ClInclude Include="C:\Users\Paul.Jutte\source\repos\Motion_Capture_GUI\Motion_Capture_Model\include\CoordinateDataStorage.hpp" />

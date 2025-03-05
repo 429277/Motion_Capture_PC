@@ -19,4 +19,24 @@ namespace Motion_Capture_View.Scripts
             z = zCoord;
         }
     }
+
+    public struct Rotation
+    {
+        public float x { get; set; }
+        public float y { get; set; }
+        public float z { get; set; }
+
+        public Rotation(float xRot, float yRot, float zRot)
+        {
+            x = xRot;
+            y = yRot;
+            z = zRot;
+        }
+    }
+
+    public struct PosePass
+    {
+        public Coordinate coordinate;
+        public Rotation rotations;
+    }
 }
