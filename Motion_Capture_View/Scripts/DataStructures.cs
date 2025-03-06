@@ -8,9 +8,9 @@ namespace Motion_Capture_View.Scripts
 {
     public struct Coordinate
     {
-        public float x {  get; set; }
-        public float y { get; set; }
-        public float z { get; set; }
+        public float x;
+        public float y;
+        public float z;
 
         public Coordinate(float xCoord, float yCoord, float zCoord)
         {
@@ -20,13 +20,13 @@ namespace Motion_Capture_View.Scripts
         }
     }
 
-    public struct Rotation
+    public struct RotationPass
     {
-        public float x { get; set; }
-        public float y { get; set; }
-        public float z { get; set; }
+        public float x;
+        public float y;
+        public float z;
 
-        public Rotation(float xRot, float yRot, float zRot)
+        public RotationPass(float xRot, float yRot, float zRot)
         {
             x = xRot;
             y = yRot;
@@ -34,9 +34,28 @@ namespace Motion_Capture_View.Scripts
         }
     }
 
+    public struct PoseSimple
+    {
+        public float transformX;
+        public float transformY;
+        public float transformZ;
+
+        public float rotationX;
+        public float rotationY;
+        public float rotationZ;
+    }
+
+
     public struct PosePass
     {
         public Coordinate coordinate;
-        public Rotation rotations;
+        public RotationPass rotation;
+
+        PosePass(Coordinate coord, RotationPass rot)
+        {
+            coordinate = coord;
+            rotation = rot;
+        }
+
     }
 }

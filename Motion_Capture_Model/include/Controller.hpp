@@ -2,4 +2,4 @@
 #include "DataStructures.hpp"
 #pragma once
 void NotifyNewCoordinateData(Coordinate newValue);
-void NotifyPosition(Coordinate position);
+void NotifyPosition(PoseSimple pose);

@@ -152,7 +152,7 @@ int PositionalTracking(int argc, char **argv, char* areaFile = "", bool calibrat
                 text_rotation = setTxt(rotation);
                 sl::float3 translation = camera_path.getTranslation();
                 text_translation = setTxt(translation);
-                NotifyPosition(*new Coordinate(translation));
+                NotifyPosition(*new PoseSimple(translation,rotation));
             }
 
             // Update rotation, translation and tracking state values in the OpenGL window

@@ -10,7 +10,7 @@ char** nothing = str;
 typedef void (*CoordinateDataCallback)(Coordinate);
 static CoordinateDataCallback callbackCoordinate = nullptr;
 
-typedef void (*PositionCallback)(Coordinate);
+typedef void (*PositionCallback)(PoseSimple);
 static PositionCallback callbackPosition = nullptr;
 
 #define Controller extern "C" _declspec(dllexport)
@@ -32,9 +32,9 @@ Controller void RegisterPositionCallback(PositionCallback cb) {
 	callbackPosition = cb;
 }
 
-void NotifyPosition(Coordinate position) {
+void NotifyPosition(PoseSimple pose) {
 	if (callbackPosition) {
-		callbackPosition(position);
+		callbackPosition(pose);
 	}
 }
 #pragma endregion

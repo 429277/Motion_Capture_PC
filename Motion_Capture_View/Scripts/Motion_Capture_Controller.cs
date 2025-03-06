@@ -36,7 +36,7 @@ namespace Motion_Capture_View.Scripts
         public static extern void RegisterCoordinateCallback(CoordinateDataCallback callbackCoordinate);
 
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate void PositionCallback(Coordinate position);
+        public delegate void PositionCallback(PoseSimple pose);
         [DllImport(dllLink, CallingConvention = CallingConvention.Cdecl)]
         public static extern void RegisterPositionCallback(PositionCallback callbackPosition);
 
@@ -56,10 +56,9 @@ namespace Motion_Capture_View.Scripts
             formReference.coordinates.Add(coordinate);
             formReference.AddCoordinate(coordinate);
         }
-        public void OnPositionReceived(Coordinate position)
+        public void OnPositionReceived(PoseSimple pose)
         {
-            formReference.calibration.UpdateRecievedCameraPostion(position);
+            formReference.calibration.UpdateRecievedCameraPostion(pose);
         }
-
     }
 }

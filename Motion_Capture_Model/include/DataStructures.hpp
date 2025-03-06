@@ -18,8 +18,7 @@ struct Coordinate {
 	}
 };
 
-struct RotationPass
-{
+struct RotationPass{
 	float x;
 	float y;
 	float z;
@@ -35,6 +34,26 @@ struct RotationPass
 		y = rots.y;
 		z = rots.z;
 	}
+};
+
+struct PoseSimple {
+	 float transformX;
+	 float transformY;
+	 float transformZ;
+
+	 float rotationX;
+	 float rotationY;
+	 float rotationZ;
+
+	 PoseSimple(sl::float3 points, sl::float3 rots) {
+		 transformX = points.x;
+		 transformY = points.y;
+		 transformZ = points.z;
+
+		 rotationX = rots.x;
+		 rotationY = rots.y;
+		 rotationZ = rots.z;
+	 }
 };
 
 struct PosePass

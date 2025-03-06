@@ -19,11 +19,14 @@ namespace Motion_Capture_View
             InitializeComponent();
         }
 
-        public void UpdateRecievedCameraPostion(Coordinate position)
+        public void UpdateRecievedCameraPostion(PoseSimple pose)
         {
-            txtRecievedX.Text = position.x.ToString();
-            txtRecievedY.Text = position.y.ToString();
-            txtRecievedZ.Text = position.z.ToString();
+            txtRecievedX.Text = pose.transformX.ToString();
+            txtRecievedY.Text = pose.transformY.ToString();
+            txtRecievedZ.Text = pose.transformZ.ToString();
+            txtRecievedRotationX.Text = pose.rotationX.ToString();
+            txtRecievedRotationY.Text = pose.rotationY.ToString();
+            txtRecievedRotationZ.Text = pose.rotationZ.ToString();
         }
 
         private void btnSetPosition_Click(object sender, EventArgs e)
