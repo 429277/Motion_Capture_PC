@@ -34,6 +34,7 @@
 #include "CoordinateDataStorage.hpp"
 #include "BodyTracking.hpp"
 #include "Controller.hpp"
+#include "INIParser.hpp"
 
 // Using std and sl namespaces
 using namespace std;
@@ -46,7 +47,7 @@ void parseArgs(int argc, char **argv, InitParameters& param);
 int BodyTracking(int argc, char **argv) {
     //DAF additions
     CoordinateDataStorage coordinateStorage;
-
+    ConfigParameters config = GetConfigurationParameters("./config.ini");
 
 
     //DAF additions end
@@ -77,6 +78,10 @@ int BodyTracking(int argc, char **argv) {
 
     // Enable Positional tracking (mandatory for object detection)
     PositionalTrackingParameters positional_tracking_parameters;
+
+    //positional_tracking_parameters.initial_world_transform.setTranslation(sl::Translation(200, 300, 300));
+    //positional_tracking_parameters.enable_area_memory = true;
+    
     //If the camera is static, uncomment the following line to have better performances
     //positional_tracking_parameters.set_as_static = true;
 

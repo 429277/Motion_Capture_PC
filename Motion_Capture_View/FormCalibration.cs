@@ -21,12 +21,16 @@ namespace Motion_Capture_View
 
         public void UpdateRecievedCameraPostion(PoseSimple pose)
         {
-            txtRecievedX.Text = pose.transformX.ToString();
-            txtRecievedY.Text = pose.transformY.ToString();
-            txtRecievedZ.Text = pose.transformZ.ToString();
-            txtRecievedRotationX.Text = pose.rotationX.ToString();
-            txtRecievedRotationY.Text = pose.rotationY.ToString();
-            txtRecievedRotationZ.Text = pose.rotationZ.ToString();
+            lblReceivedStatus.Text = pose.status;
+            if (pose.status.Equals("OK"))
+            {
+                txtRecievedX.Text = pose.transformX.ToString();
+                txtRecievedY.Text = pose.transformY.ToString();
+                txtRecievedZ.Text = pose.transformZ.ToString();
+                txtRecievedRotationX.Text = pose.rotationX.ToString();
+                txtRecievedRotationY.Text = pose.rotationY.ToString();
+                txtRecievedRotationZ.Text = pose.rotationZ.ToString();
+            }
         }
 
         private void btnSetPosition_Click(object sender, EventArgs e)

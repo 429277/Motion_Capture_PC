@@ -42,9 +42,9 @@ inline std::string setTxt(sl::float3 value) {
     return stream.str();
 }
 
-std::string parseArgs(int argc, char **argv, sl::InitParameters &param);
+std::string parseArgs(int argc, char** argv, sl::InitParameters& param);
 
-int PositionalTracking(int argc, char **argv, char* areaFile = "", bool calibration = 0)
+int PositionalTracking(int argc, char **argv, char* areaFile = "", bool createNewArea = 0) //sl::float3 worldFrameW
 {
 
     Camera zed;
@@ -79,10 +79,11 @@ int PositionalTracking(int argc, char **argv, char* areaFile = "", bool calibrat
     std::string text_rotation, text_translation;
 
     // Set parameters for Positional Tracking
-    PositionalTrackingParameters positional_tracking_param;  
+    PositionalTrackingParameters positional_tracking_param;
     positional_tracking_param.enable_imu_fusion = true;
     positional_tracking_param.mode = sl::POSITIONAL_TRACKING_MODE::GEN_1;
-    // positional_tracking_param.enable_area_memory = true;
+    positional_tracking_param.enable_area_memory = true;
+    //positional_tracking_param.area_file_path = "Area1.area";
     if (areaFile != "") {
         positional_tracking_param.area_file_path = areaFile;
     }
@@ -152,8 +153,9 @@ int PositionalTracking(int argc, char **argv, char* areaFile = "", bool calibrat
                 text_rotation = setTxt(rotation);
                 sl::float3 translation = camera_path.getTranslation();
                 text_translation = setTxt(translation);
-                NotifyPosition(*new PoseSimple(translation,rotation));
+                NotifyPosition(*new PoseSimple(translation, rotation, "OK"));
             }
+            else { NotifyPosition(*new PoseSimple("BAD")); }
 
             // Update rotation, translation and tracking state values in the OpenGL window
             viewer.updateData(camera_path.pose_data, text_translation, text_rotation, PositionalTrackingStatus);
@@ -171,8 +173,8 @@ int PositionalTracking(int argc, char **argv, char* areaFile = "", bool calibrat
         else
             sleep_ms(1);
     }
-    if (calibration = 0) {
-        zed.disablePositionalTracking();
+    if (createNewArea = 0) {
+        zed.disablePositionalTracking("Area2");
     }
     else {
         zed.disablePositionalTracking("Area1");

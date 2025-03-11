@@ -49,6 +49,8 @@
             txtRecievedRotationY = new TextBox();
             txtRecievedRotationX = new TextBox();
             label10 = new Label();
+            label11 = new Label();
+            lblReceivedStatus = new Label();
             SuspendLayout();
             // 
             // btnSetPosition
@@ -223,11 +225,31 @@
             label10.TabIndex = 21;
             label10.Text = "Current camera rotation:";
             // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Location = new Point(85, 85);
+            label11.Name = "label11";
+            label11.Size = new Size(42, 15);
+            label11.TabIndex = 22;
+            label11.Text = "Status:";
+            // 
+            // lblReceivedStatus
+            // 
+            lblReceivedStatus.AutoSize = true;
+            lblReceivedStatus.Location = new Point(133, 85);
+            lblReceivedStatus.Name = "lblReceivedStatus";
+            lblReceivedStatus.Size = new Size(42, 15);
+            lblReceivedStatus.TabIndex = 23;
+            lblReceivedStatus.Text = "Status:";
+            // 
             // FormCalibration
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(767, 186);
+            Controls.Add(lblReceivedStatus);
+            Controls.Add(label11);
             Controls.Add(label10);
             Controls.Add(label7);
             Controls.Add(label8);
@@ -278,5 +300,7 @@
         private TextBox txtRecievedRotationY;
         private TextBox txtRecievedRotationX;
         private Label label10;
+        private Label label11;
+        private Label lblReceivedStatus;
     }
 }

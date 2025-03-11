@@ -45,7 +45,9 @@ struct PoseSimple {
 	 float rotationY;
 	 float rotationZ;
 
-	 PoseSimple(sl::float3 points, sl::float3 rots) {
+	 char* status;
+
+	 PoseSimple(sl::float3 points, sl::float3 rots, char *stat ) {
 		 transformX = points.x;
 		 transformY = points.y;
 		 transformZ = points.z;
@@ -53,6 +55,18 @@ struct PoseSimple {
 		 rotationX = rots.x;
 		 rotationY = rots.y;
 		 rotationZ = rots.z;
+
+		 status = stat;
+	 }
+	 PoseSimple(char *stat) {
+		 status = stat;
+		 transformX = 0;
+		 transformY = 0;
+		 transformZ = 0;
+
+		 rotationX = 0;
+		 rotationY = 0;
+		 rotationZ = 0;
 	 }
 };
 
@@ -67,4 +81,21 @@ struct PosePass
 		rotation = rot;
 	}
 
+};
+
+struct ConfigParameters {
+	Coordinate *initialPosition;
+	RotationPass *initialRotation;
+	int resolution; 
+
+	ConfigParameters(sl::float3 position, sl::float3 rotation, int res) {
+		initialPosition = new Coordinate(position);
+		initialRotation = new RotationPass(rotation);
+		resolution = res;
+	}
+	ConfigParameters(Coordinate* position, RotationPass* rotation, int res) {
+		initialPosition = position;
+		initialRotation = rotation;
+		resolution = res;
+	}
 };

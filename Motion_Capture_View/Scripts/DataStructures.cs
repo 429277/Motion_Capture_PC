@@ -43,6 +43,8 @@ namespace Motion_Capture_View.Scripts
         public float rotationX;
         public float rotationY;
         public float rotationZ;
+
+        public string status;
     }
 
 
