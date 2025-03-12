@@ -49,7 +49,7 @@ ConfigParameters GetConfigurationParameters(const char* filePath) {
     std::string& yRotationString = ini["Rotation"]["y"];
     std::string& zRotationString = ini["Rotation"]["z"];
 
-    std::string& resolutionString = ini["Advanced"]["resolution"];
+    std::string& resolutionString = ini["Advanced"]["measurementsPerMinute"];
 
     Coordinate initialPosition = *new Coordinate(stof(xPositionString), stof(yPositionString), stof(zPositionString));
     RotationPass initialRotation = *new RotationPass(stof(xRotationString), stof(yRotationString), stof(zRotationString));

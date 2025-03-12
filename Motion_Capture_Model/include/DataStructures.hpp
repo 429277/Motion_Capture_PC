@@ -86,16 +86,16 @@ struct PosePass
 struct ConfigParameters {
 	Coordinate *initialPosition;
 	RotationPass *initialRotation;
-	int resolution; 
+	int measurementsPerMinute; 
 
-	ConfigParameters(sl::float3 position, sl::float3 rotation, int res) {
+	ConfigParameters(sl::float3 position, sl::float3 rotation, int mpm) {
 		initialPosition = new Coordinate(position);
 		initialRotation = new RotationPass(rotation);
-		resolution = res;
+		measurementsPerMinute = mpm;
 	}
-	ConfigParameters(Coordinate* position, RotationPass* rotation, int res) {
+	ConfigParameters(Coordinate* position, RotationPass* rotation, int mpm) {
 		initialPosition = position;
 		initialRotation = rotation;
-		resolution = res;
+		measurementsPerMinute = mpm;
 	}
 };
