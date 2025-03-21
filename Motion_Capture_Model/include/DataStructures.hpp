@@ -18,25 +18,37 @@ struct Coordinate {
 	}
 };
 
-struct RotationPass{
+struct RotationSimple{
 	float x;
 	float y;
 	float z;
 
-	RotationPass(float xRot, float yRot, float zRot)
+	RotationSimple(float xRot, float yRot, float zRot)
 	{
 		x = xRot;
 		y = yRot;
 		z = zRot;
 	}
-	RotationPass(sl::float3 rots) {
+	RotationSimple(sl::float3 rots) {
 		x = rots.x;
 		y = rots.y;
 		z = rots.z;
 	}
 };
 
-struct PoseSimple {
+struct PoseSimple
+{
+	struct Coordinate coordinate;
+	struct RotationSimple rotation;
+
+	PoseSimple(Coordinate const& coord, RotationSimple const& rot) 
+		: coordinate(coord)
+		, rotation(rot)
+	{}
+
+};
+
+struct CameraPoseData {
 	 float transformX;
 	 float transformY;
 	 float transformZ;
@@ -47,7 +59,7 @@ struct PoseSimple {
 
 	 char* status;
 
-	 PoseSimple(sl::float3 points, sl::float3 rots, char *stat ) {
+	 CameraPoseData(sl::float3 points, sl::float3 rots, char *stat ) {
 		 transformX = points.x;
 		 transformY = points.y;
 		 transformZ = points.z;
@@ -58,7 +70,7 @@ struct PoseSimple {
 
 		 status = stat;
 	 }
-	 PoseSimple(char *stat) {
+	 CameraPoseData(char *stat) {
 		 status = stat;
 		 transformX = 0;
 		 transformY = 0;
@@ -70,32 +82,14 @@ struct PoseSimple {
 	 }
 };
 
-struct PosePass
-{
-	struct Coordinate *coordinate;
-	struct RotationPass *rotation;
-
-	PosePass(Coordinate *coord, RotationPass *rot)
-	{
-		coordinate = coord;
-		rotation = rot;
-	}
-
-};
-
 struct ConfigParameters {
-	Coordinate *initialPosition;
-	RotationPass *initialRotation;
-	int measurementsPerMinute; 
+	Coordinate initialPosition;
+	RotationSimple initialRotation;
+	float measurementsPerMinute; 
 
-	ConfigParameters(sl::float3 position, sl::float3 rotation, int mpm) {
-		initialPosition = new Coordinate(position);
-		initialRotation = new RotationPass(rotation);
-		measurementsPerMinute = mpm;
-	}
-	ConfigParameters(Coordinate* position, RotationPass* rotation, int mpm) {
-		initialPosition = position;
-		initialRotation = rotation;
-		measurementsPerMinute = mpm;
-	}
+	ConfigParameters(Coordinate const& position, RotationSimple const& rotation, float mpm) 
+		: initialPosition(position)
+		, initialRotation(rotation)
+		,measurementsPerMinute(mpm)
+	{}
 };

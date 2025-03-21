@@ -31,6 +31,7 @@
 // Sample includes
 #include "GLViewerBodyTracking.hpp" //Skeleton in simluated space
 #include "TrackingViewer.hpp" //Skeleton overlay in camera footage
+
 #include "CoordinateDataStorage.hpp"
 #include "BodyTracking.hpp"
 #include "Controller.hpp"
@@ -41,16 +42,21 @@ using namespace std;
 using namespace sl;
 using std::vector;
 
+//function declarations used by this script
 void print(string msg_prefix, ERROR_CODE err_code = ERROR_CODE::SUCCESS, string msg_suffix = "");
 void parseArgs(int argc, char **argv, InitParameters& param);
 
+
+//parameters
+const char* configFilePath = "./config.ini";
+
+
 int BodyTracking(int argc, char **argv) {
-    //DAF additions
+    //additions
     CoordinateDataStorage coordinateStorage;
-    ConfigParameters config = GetConfigurationParameters("./config.ini");
+    ConfigParameters config = GetConfigurationParameters(configFilePath);
 
-
-    //DAF additions end
+    //additions end
 
 #ifdef _SL_JETSON_
     const bool isJetson = true;
@@ -79,8 +85,6 @@ int BodyTracking(int argc, char **argv) {
     // Enable Positional tracking (mandatory for object detection)
     PositionalTrackingParameters positional_tracking_parameters;
 
-    //positional_tracking_parameters.initial_world_transform.setTranslation(sl::Translation(200, 300, 300));
-    //positional_tracking_parameters.enable_area_memory = true;
     
     //If the camera is static, uncomment the following line to have better performances
     //positional_tracking_parameters.set_as_static = true;
@@ -186,7 +190,6 @@ int BodyTracking(int argc, char **argv) {
     //viewer.exit();
     image_left.free();
     bodies.body_list.clear();
-
     // Disable modules
     zed.disableBodyTracking();
     zed.disablePositionalTracking();
@@ -247,3 +250,4 @@ void print(string msg_prefix, ERROR_CODE err_code, string msg_suffix) {
         cout << " " << msg_suffix;
     cout << endl;
 }
+

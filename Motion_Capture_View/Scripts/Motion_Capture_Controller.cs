@@ -15,6 +15,8 @@ namespace Motion_Capture_View.Scripts
 
         const string dllLink = @"Motion_Capture_Model.dll";
 
+        #region Externs
+
         [DllImport(dllLink, CallingConvention = CallingConvention.Cdecl)]
         public static extern int TestDll();
 
@@ -25,7 +27,9 @@ namespace Motion_Capture_View.Scripts
         public static extern void StartPositionalTracking();
 
         [DllImport(dllLink, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SetCameraPosition(Coordinate position);
+        public static extern void UpdateConfigParameters(ConfigParameters configParameters);
+
+        #endregion
 
         #region Callbacks
 
@@ -36,7 +40,7 @@ namespace Motion_Capture_View.Scripts
         public static extern void RegisterCoordinateCallback(CoordinateDataCallback callbackCoordinate);
 
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate void PositionCallback(PoseSimple pose);
+        public delegate void PositionCallback(CameraPoseData pose);
         [DllImport(dllLink, CallingConvention = CallingConvention.Cdecl)]
         public static extern void RegisterPositionCallback(PositionCallback callbackPosition);
 
@@ -53,12 +57,13 @@ namespace Motion_Capture_View.Scripts
 
         public void OnCoordinateReceived(Coordinate coordinate)
         {
-            formReference.coordinates.Add(coordinate);
+            //formReference.coordinates.Add(coordinate);
             formReference.AddCoordinate(coordinate);
         }
-        public void OnPositionReceived(PoseSimple pose)
+        public void OnPositionReceived(CameraPoseData pose)
         {
             formReference.calibration.UpdateRecievedCameraPostion(pose);
         }
+
     }
 }

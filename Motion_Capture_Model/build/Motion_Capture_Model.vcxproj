@@ -31,22 +31,22 @@
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <CharacterSet>MultiByte</CharacterSet>
     <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <CharacterSet>MultiByte</CharacterSet>
     <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <CharacterSet>MultiByte</CharacterSet>
     <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <CharacterSet>MultiByte</CharacterSet>
     <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
@@ -425,7 +425,6 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="C:\Users\Paul.Jutte\source\repos\Motion_Capture_GUI\Motion_Capture_Model\src\BodyTracking.cpp" />
     <ClCompile Include="C:\Users\Paul.Jutte\source\repos\Motion_Capture_GUI\Motion_Capture_Model\src\Controller.cpp" />
     <ClCompile Include="C:\Users\Paul.Jutte\source\repos\Motion_Capture_GUI\Motion_Capture_Model\src\CoordinateDataStorage.cpp" />
-    <ClCompile Include="C:\Users\Paul.Jutte\source\repos\Motion_Capture_GUI\Motion_Capture_Model\src\DataStructures.cpp" />
     <ClCompile Include="C:\Users\Paul.Jutte\source\repos\Motion_Capture_GUI\Motion_Capture_Model\src\GLViewerBodyTracking.cpp" />
     <ClCompile Include="C:\Users\Paul.Jutte\source\repos\Motion_Capture_GUI\Motion_Capture_Model\src\GLViewerPositionalTracking.cpp" />
     <ClCompile Include="C:\Users\Paul.Jutte\source\repos\Motion_Capture_GUI\Motion_Capture_Model\src\PositionalTracking.cpp" />
@@ -440,9 +439,6 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="config.ini" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

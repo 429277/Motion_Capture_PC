@@ -46,5 +46,34 @@ namespace Motion_Capture_View
             calibration.Show();
             Motion_Capture_Controller.StartPositionalTracking();
         }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSaveSettings_Click(object sender, EventArgs e)
+        {
+            float x;
+            float y;
+            float z;
+            float rx;
+            float ry;
+            float rz;
+            float measurementsPerMinute;
+
+            float.TryParse(txtSettingX.Text, out x);
+            float.TryParse(txtSettingY.Text, out y);
+            float.TryParse(txtSettingZ.Text, out z);
+            float.TryParse(txtSettingRX.Text, out rx);
+            float.TryParse(txtSettingRY.Text, out ry);
+            float.TryParse(txtSettingRZ.Text, out rz);
+            float.TryParse(txtSettingMeasurementPerMinute.Text, out measurementsPerMinute);
+
+            Coordinate initialPosition = new Coordinate(x,y,z);
+            RotationSimple initialRotation = new RotationSimple(rx,ry,rz);
+            ConfigParameters config = new ConfigParameters(initialPosition, initialRotation, measurementsPerMinute);
+            Motion_Capture_Controller.UpdateConfigParameters(config);
+        }
     }
 }

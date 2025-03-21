@@ -1,0 +1,10 @@
+^C:\USERS\PAUL.JUTTE\SOURCE\REPOS\MOTION_CAPTURE_GUI\MOTION_CAPTURE_MODEL\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/Paul.Jutte/source/repos/Motion_Capture_GUI/Motion_Capture_Model -BC:/Users/Paul.Jutte/source/repos/Motion_Capture_GUI/Motion_Capture_Model/build --check-stamp-file C:/Users/Paul.Jutte/source/repos/Motion_Capture_GUI/Motion_Capture_Model/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Motion_Capture_View.Scripts
 {
+    [StructLayout(LayoutKind.Sequential)]
     public struct Coordinate
     {
         public float x;
@@ -20,13 +22,14 @@ namespace Motion_Capture_View.Scripts
         }
     }
 
-    public struct RotationPass
+    [StructLayout(LayoutKind.Sequential)]
+    public struct RotationSimple
     {
         public float x;
         public float y;
         public float z;
 
-        public RotationPass(float xRot, float yRot, float zRot)
+        public RotationSimple(float xRot, float yRot, float zRot)
         {
             x = xRot;
             y = yRot;
@@ -35,6 +38,19 @@ namespace Motion_Capture_View.Scripts
     }
 
     public struct PoseSimple
+    {
+        public Coordinate coordinate;
+        public RotationSimple rotation;
+
+        PoseSimple(Coordinate coord, RotationSimple rot)
+        {
+            coordinate = coord;
+            rotation = rot;
+        }
+
+    }
+
+    public struct CameraPoseData
     {
         public float transformX;
         public float transformY;
@@ -48,16 +64,18 @@ namespace Motion_Capture_View.Scripts
     }
 
 
-    public struct PosePass
+    [StructLayout(LayoutKind.Sequential)]
+    public struct ConfigParameters
     {
-        public Coordinate coordinate;
-        public RotationPass rotation;
+        Coordinate initialPosition;
+        RotationSimple initialRotation;
+        float measurementsPerMinute;
 
-        PosePass(Coordinate coord, RotationPass rot)
+        public ConfigParameters(Coordinate position, RotationSimple rotation, float mpm)
         {
-            coordinate = coord;
-            rotation = rot;
+            initialPosition = position;
+            initialRotation = rotation;
+            measurementsPerMinute = mpm;
         }
-
-    }
+    };
 }

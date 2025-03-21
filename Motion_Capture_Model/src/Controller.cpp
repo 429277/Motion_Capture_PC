@@ -3,6 +3,7 @@
 #include "Controller.hpp"
 #include <sl/Camera.hpp>
 #include "DataStructures.hpp"
+#include "INIParser.hpp"
 
 char* str[] = { "" };
 char** nothing = str;
@@ -10,7 +11,7 @@ char** nothing = str;
 typedef void (*CoordinateDataCallback)(Coordinate);
 static CoordinateDataCallback callbackCoordinate = nullptr;
 
-typedef void (*PositionCallback)(PoseSimple);
+typedef void (*PositionCallback)(CameraPoseData);
 static PositionCallback callbackPosition = nullptr;
 
 #define Controller extern "C" _declspec(dllexport)
@@ -32,7 +33,7 @@ Controller void RegisterPositionCallback(PositionCallback cb) {
 	callbackPosition = cb;
 }
 
-void NotifyPosition(PoseSimple pose) {
+void NotifyPosition(CameraPoseData pose) {
 	if (callbackPosition) {
 		callbackPosition(pose);
 	}
@@ -54,7 +55,8 @@ Controller void StopBodyTracking() {
 
 Controller void StartPositionalTracking(char* areaFile) {
 	PositionalTracking(0, nothing, "", 0);
+}
 
-}Controller void SetCameraPosition(Coordinate position) {
-	
+Controller void UpdateConfigParameters(ConfigParameters configParameters) {
+	SetConfigurationParameters("./config.ini", configParameters);
 }

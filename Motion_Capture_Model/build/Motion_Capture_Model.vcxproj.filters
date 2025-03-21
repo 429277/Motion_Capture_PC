@@ -10,9 +10,6 @@
     <ClCompile Include="C:\Users\Paul.Jutte\source\repos\Motion_Capture_GUI\Motion_Capture_Model\src\CoordinateDataStorage.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Paul.Jutte\source\repos\Motion_Capture_GUI\Motion_Capture_Model\src\DataStructures.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="C:\Users\Paul.Jutte\source\repos\Motion_Capture_GUI\Motion_Capture_Model\src\GLViewerBodyTracking.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -83,8 +80,5 @@
     <Filter Include="Source Files">
       <UniqueIdentifier>{F46DA5A2-AC1C-3714-A80A-91164DF63799}</UniqueIdentifier>
     </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="config.ini" />
   </ItemGroup>
 </Project>

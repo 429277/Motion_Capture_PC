@@ -84,6 +84,7 @@ int PositionalTracking(int argc, char **argv, char* areaFile = "", bool createNe
     positional_tracking_param.mode = sl::POSITIONAL_TRACKING_MODE::GEN_1;
     positional_tracking_param.enable_area_memory = true;
     //positional_tracking_param.area_file_path = "Area1.area";
+    positional_tracking_param.enable_imu_fusion = true;
     if (areaFile != "") {
         positional_tracking_param.area_file_path = areaFile;
     }
@@ -153,9 +154,9 @@ int PositionalTracking(int argc, char **argv, char* areaFile = "", bool createNe
                 text_rotation = setTxt(rotation);
                 sl::float3 translation = camera_path.getTranslation();
                 text_translation = setTxt(translation);
-                NotifyPosition(*new PoseSimple(translation, rotation, "OK"));
+                NotifyPosition(*new CameraPoseData(translation, rotation, "OK"));
             }
-            else { NotifyPosition(*new PoseSimple("BAD")); }
+            else { NotifyPosition(*new CameraPoseData("BAD")); }
 
             // Update rotation, translation and tracking state values in the OpenGL window
             viewer.updateData(camera_path.pose_data, text_translation, text_rotation, PositionalTrackingStatus);
@@ -173,8 +174,8 @@ int PositionalTracking(int argc, char **argv, char* areaFile = "", bool createNe
         else
             sleep_ms(1);
     }
-    if (createNewArea = 0) {
-        zed.disablePositionalTracking("Area2");
+    if (createNewArea == 0) {
+        zed.disablePositionalTracking("Area4");
     }
     else {
         zed.disablePositionalTracking("Area1");

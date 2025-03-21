@@ -19,7 +19,7 @@ namespace Motion_Capture_View
             InitializeComponent();
         }
 
-        public void UpdateRecievedCameraPostion(PoseSimple pose)
+        public void UpdateRecievedCameraPostion(CameraPoseData pose)
         {
             lblReceivedStatus.Text = pose.status;
             if (pose.status.Equals("OK"))
@@ -42,7 +42,7 @@ namespace Motion_Capture_View
             float.TryParse(txtSetPositionY.Text, out y);
             float.TryParse(txtSetPositionZ.Text, out z);
 
-            Motion_Capture_Controller.SetCameraPosition(new Coordinate(x, y, z));
+            //Motion_Capture_Controller.SetCameraPosition(new Coordinate(x, y, z));
         }
     }
 }
